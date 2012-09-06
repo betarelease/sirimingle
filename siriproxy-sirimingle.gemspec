@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "sirimingle"
+  s.name        = "siriproxy-sirimingle"
   s.version     = "0.0.1" 
   s.authors     = ["betarelease"]
   s.email       = [""]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{An Siri Plugin for Mingle}
   s.description = %q{Siri plugin to interact with Mingle}
 
-  s.rubyforge_project = "sirimingle"
+  s.rubyforge_project = "siriproxy-sirimingle"
 
   s.files         = `git ls-files 2> /dev/null`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/* 2> /dev/null`.split("\n")
