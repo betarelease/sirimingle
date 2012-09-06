@@ -1,3 +1,5 @@
+require 'crack'
+
 class SiriProxy::Plugin::API
 
   def initialize(host, project, username, password)
@@ -10,7 +12,7 @@ class SiriProxy::Plugin::API
   
   def get(number)
     card_xml = `curl https://#{@username}:#{@password}@#{@host}/api/v2/projects/#{@project}/card/#{number}.xml`
-    Xml.to_hash(card_xml)
+    Crack::XML.parse(card_xml)
   end
   
   def put(*args)
