@@ -15,7 +15,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  listen_for /change card number ([0-9,]*[0-9]) to /i do |number|    
+  listen_for /change name of card ([0-9,]*[0-9]) to /i do |number|    
     say "Card number: #{number} has status #{status(number)}"
   
     response = ask "What should I name this card to? " #ask the user for something
