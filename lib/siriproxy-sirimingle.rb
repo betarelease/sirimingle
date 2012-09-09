@@ -9,13 +9,13 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     @api = API.new(config['host'], config['project'], config['username'], config['password'])
   end
 
-  listen_for /card number ([0-9,]*[0-9])/i do |number|
+  listen_for /card status ([0-9,]*[0-9])/i do |number|
     say "Card number: #{number} has status #{status(number)}"
     
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  listen_for /change name of card ([0-9,]*[0-9]) to /i do |number|    
+  listen_for /change card ([0-9,]*[0-9]) to /i do |number|    
     say "Card number: #{number} has status #{status(number)}"
   
     response = ask "What should I name this card to? " #ask the user for something
