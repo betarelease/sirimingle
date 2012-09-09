@@ -35,7 +35,6 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
 
   def status(number)
     card = @api.get(number)
-    puts "[DEBUG] card => #{card.inspect}"
     card["card"]["properties"].first["value"]
   end
 end
