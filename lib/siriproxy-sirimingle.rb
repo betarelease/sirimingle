@@ -6,7 +6,7 @@ require 'api'
 class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
 
   def initialize(config)
-    @api = API.new(config['host'], config['project'], config['user'], config['password'])
+    @api = API.new(config['host'], config['project'], config['username'], config['password'])
   end
 
   listen_for /card ([0-9,]*[0-9])/i do |number|
