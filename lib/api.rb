@@ -15,7 +15,8 @@ class SiriProxy::Plugin::API
     Crack::XML.parse(card_xml)
   end
   
-  def put(*args)
+  def put(names)
+    `curl -X PUT -d 'card["name"]=#{name} https://#{@username}:#{@password}@#{@host}/api/v2/projects/#{@project}/cards/#{number}.xml`    
   end
 
 end

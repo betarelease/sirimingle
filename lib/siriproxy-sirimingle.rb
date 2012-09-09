@@ -15,23 +15,22 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  # listen_for /move card number ([0-9,]*[0-9]) to /i do |number|
-  #   say "Card number: #{number} has status #{status(number)}"
-  # 
-  #   response = ask "Where should I move this card to? " #ask the user for something
-  #   
-  #   say "Moving card to #{response}"
-  #   
-  #   success = @api.put(response.to_s)
-  #   if(success)
-  #     say "Card #{number} has now moved to #{response}"
-  #   else
-  #     say "Card #{number} cannot be moved to #{response}"  
-  #   end
-  # 
-  #   request_completed #always complete your request! Otherwise the phone will "spin" at the user!
-  # end
-
+  listen_for /change card number ([0-9,]*[0-9]) to /i do |number|    
+    say "Card number: #{number} has status #{status(number)}"
+  
+    response = ask "What should I name this card to? " #ask the user for something
+    
+    say "Changing card name to #{response}"
+    
+    success = @api.put(response.to_s)
+    if(success)
+      say "Card #{number} has now changed to #{response}"
+    else
+      say "Card #{number} cannot be changed to #{response}"  
+    end
+  
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
 
   def status(number)
     card = @api.get(number)
