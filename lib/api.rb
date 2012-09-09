@@ -11,7 +11,7 @@ class SiriProxy::Plugin::API
   end
   
   def get(number)
-    card_xml = `curl https://#{@username}:#{@password}@#{@host}/api/v2/projects/#{@project}/card/#{number}.xml`
+    card_xml = `curl https://#{@username}:#{@password}@#{@host}/api/v2/projects/#{@project}/cards/#{number}.xml`
     puts "[DEBUG] card_xml => #{card_xml.inspect}"
     Crack::XML.parse(card_xml)
   end
