@@ -9,7 +9,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     @api = API.new(config['host'], config['project'], config['user'], config['password'])
   end
 
-  listen_for /card number ([0-9,]*[0-9])/i do |number|
+  listen_for /card ([0-9,]*[0-9])/i do |number|
     say "Card number: #{number} has status #{status(number)}"
     
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
