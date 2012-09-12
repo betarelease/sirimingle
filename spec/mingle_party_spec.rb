@@ -11,8 +11,10 @@ describe MingleParty do
   it "should find card" do
     mingle = MingleParty.new(@config['host'], @config['username'], @config['password'], @config['project'])
     card = mingle.get(13)
-    
+
     card['card']['properties'].first['value'].should =~ /done/
+    card['card']['name'].should =~ /card 13/
+    card['card']['description'].should == nil
   end
 
 end

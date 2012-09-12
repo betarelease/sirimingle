@@ -14,8 +14,14 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     
     say "Card number: #{number} has status #{card['card']['properties'].first['value']}"
 
-    # response = ask "What should I name this card to? " #ask the user for something
-    
+    response = ask "What would you like to know about this card?"
+
+    property = card['card'][response]
+    if property
+      say "Card number: #{number} has #{response} : #{property}"
+    else
+      say "Could not find #{response} about card number #{number}"
+    end
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
