@@ -2,6 +2,7 @@ require 'cora'
 require 'siri_objects'
 require 'pp'
 require 'mingle_party'
+require 'crack'
 
 class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   def initialize(config)
@@ -10,7 +11,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   
   listen_for /find story ([0-9,]*[0-9])/i do |number|
     card_xml = @mingle.get(number)
-    card = Crack::XML.parse(card_xml)
+    card = ::Crack::XML.parse(card_xml)
     
     say "Card number: #{number} has status #{card['card']['properties'].first['value']}"
 
