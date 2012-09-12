@@ -16,7 +16,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
 
     response = ask "What would you like to know about this card?"
 
-    property = card['card'][response.downcase]
+    property = card['card'][response.strip.downcase]
     if property
       say "Card number: #{number} has #{response} : #{property}"
     else
