@@ -4,7 +4,7 @@ require 'pp'
 
 class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   def initialize(config)
-    @mingle = MingleParty.new(config['host'], config['username'], config['password'], config['project'])
+    @mingle = ::MingleParty.new(config['host'], config['username'], config['password'], config['project'])
   end
   
   listen_for /find story ([0-9,]*[0-9])/i do |number|
