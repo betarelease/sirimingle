@@ -1,6 +1,7 @@
 require 'cora'
 require 'siri_objects'
 require 'pp'
+require 'mingle_party'
 
 class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   def initialize(config)
