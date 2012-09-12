@@ -3,6 +3,7 @@ PATH
   specs:
     siriproxy-sirimingle (0.0.1)
       crack
+      httparty
 
 GEM
   remote: http://rubygems.org/

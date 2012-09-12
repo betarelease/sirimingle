@@ -10,8 +10,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   end
   
   listen_for /find story ([0-9,]*[0-9])/i do |number|
-    card_xml = @mingle.get(number)
-    card = ::Crack::XML.parse(card_xml)
+    card = @mingle.get(number)
     
     say "Card number: #{number} has status #{card['card']['properties'].first['value']}"
 

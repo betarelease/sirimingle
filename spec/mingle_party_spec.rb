@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'yaml'
+require 'crack'
 
 describe MingleParty do
   
@@ -9,12 +10,9 @@ describe MingleParty do
   
   it "should find card" do
     mingle = MingleParty.new(@config['host'], @config['username'], @config['password'], @config['project'])
-    response = mingle.get(13)
+    card = mingle.get(13)
     
-    response.code.should == 200
-    response.body.should =~ /card 13/
+    card['card']['properties'].first['value'].should =~ /done/
   end
 
-  
-  
 end

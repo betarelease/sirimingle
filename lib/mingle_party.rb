@@ -1,4 +1,5 @@
 require 'httparty'
+require 'crack'
 
 class MingleParty
   include HTTParty
@@ -9,7 +10,8 @@ class MingleParty
   end
 
   def get(number)    
-    self.class.get("#{@uri}/cards/#{number}.xml", :basic_auth => @auth)
+    response = self.class.get("#{@uri}/cards/#{number}.xml", :basic_auth => @auth)
+    Crack::XML.parse(response.body)
   end
   
 end
