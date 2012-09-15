@@ -14,4 +14,15 @@ class MingleParty
     Crack::XML.parse(response.body)
   end
   
+  def put(number, status)
+    options = { :query => { 'card[properties[][name]' => 'status', 'card[properties][][value]' => status }, 
+                :basic_auth => @auth }
+    response  = self.class.put( "#{@uri}/cards/#{number}.xml", options )
+  end
+  
+  def post(message)
+    options = { :query => { 'murmur[body]' => message }, 
+                :basic_auth => @auth }
+    response  = self.class.post( "#{@uri}/murmurs.xml", options )
+  end
 end

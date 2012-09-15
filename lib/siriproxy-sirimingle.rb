@@ -25,21 +25,28 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  # listen_for /change card ([0-9,]*[0-9]) to /i do |number|    
-  #   say "Card number: #{number} has status #{status(number)}"
-  # 
-  #   response = ask "What should I name this card to? " #ask the user for something
-  #   
-  #   say "Changing card name to #{response}"
-  #   
-  #   success = @api.put(response.to_s)
-  #   if(success)
-  #     say "Card #{number} has now changed to #{response}"
-  #   else
-  #     say "Card #{number} cannot be changed to #{response}"  
-  #   end
-  # 
-  #   request_completed #always complete your request! Otherwise the phone will "spin" at the user!
-  # end
-  # 
+  listen_for /change card ([0-9,]*[0-9])/i do |number|    
+    card = @mingle.get(number)
+    
+    say "Card number: #{number} has status #{card['card']['properties'].first['value']}"
+  
+    response = ask "What should I name this card to? " #ask the user for something
+    
+    say "Changing card name to #{response}"
+    
+    success = @mingle.put(number, response.to_s)
+    if(success)
+      say "Card #{number} has now changed to #{response}"
+    else
+      say "Card #{number} cannot be changed to #{response}"  
+    end
+  
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
+  
+  listen_for /murmur ([.*])/ do |message|
+    say "Murmuring this for you : #{message}"
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
+  
 end
