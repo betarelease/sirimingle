@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["betarelease"]
   s.email       = [""]
   s.homepage    = ""
-  s.summary     = %q{An Siri Plugin for Mingle}
+  s.summary     = %q{A Siri Plugin for Mingle}
   s.description = %q{Siri plugin to interact with Mingle}
 
   s.rubyforge_project = "siriproxy-sirimingle"
@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   s.add_runtime_dependency "crack"
+  s.add_runtime_dependency "httparty"
 end
