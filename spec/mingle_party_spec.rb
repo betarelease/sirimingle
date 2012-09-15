@@ -30,7 +30,7 @@ describe MingleParty do
     murmur = mingle.post('happy to mingle xoxo siri')
 
     murmur['murmur']['body'].should =~ /happy to mingle/
-    
+
   end
 
 

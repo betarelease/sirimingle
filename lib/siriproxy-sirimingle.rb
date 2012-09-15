@@ -38,7 +38,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     if(success)
       say "Card #{number} has now changed to #{response}"
     else
-      say "Card #{number} cannot be changed to #{response}"  
+      say "There was an error connecting to mingle."  
     end
   
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
@@ -46,6 +46,14 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
   
   listen_for /murmur ([.*])/ do |message|
     say "Murmuring this for you : #{message}"
+
+    success = @mingle.post(message)
+    if(success)
+      say "Murmured your message"
+    else
+      say "There was an error connecting to mingle"  
+    end
+
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
