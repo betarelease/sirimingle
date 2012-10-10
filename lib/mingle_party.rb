@@ -20,8 +20,8 @@ class MingleParty
     response  = self.class.put( "#{@uri}/cards/#{number}.xml", options )
   end
   
-  def post(message)
-    options = { :query => { 'murmur[body]' => message }, 
+  def post(message, command)
+    options = { :query => { command => message }, 
                 :basic_auth => @auth }
     response  = self.class.post( "#{@uri}/murmurs.xml", options )
   end

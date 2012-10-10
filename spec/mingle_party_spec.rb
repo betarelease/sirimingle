@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'yaml'
-require 'crack'
 
 describe MingleParty do
   
@@ -27,11 +25,16 @@ describe MingleParty do
 
   it "should murmur about its happiness" do
     mingle = MingleParty.new(@config['host'], @config['username'], @config['password'], @config['project'])
-    murmur = mingle.post('happy to mingle xoxo siri')
+    murmur = mingle.post('happy to mingle xoxo siri', 'murmur[body]')
 
     murmur['murmur']['body'].should =~ /happy to mingle/
-
   end
+  
+  it "should accept a command for post" do
+    mingle = MingleParty.new(@config['host'], @config['username'], @config['password'], @config['project'])
+    post_with_command = mingle.post('happy to mingle xoxo siri', 'card[new]')
 
+    post_with_command.should be_true
+  end
 
 end

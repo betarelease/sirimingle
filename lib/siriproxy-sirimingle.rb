@@ -25,12 +25,12 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  listen_for /change card ([0-9,]*[0-9])/i do |number|    
+  listen_for /change story ([0-9,]*[0-9])/i do |number|
     card = @mingle.get(number)
     
     say "Card number: #{number} has status #{card['card']['properties'].first['value']}"
   
-    response = ask "What should I name this card to? " #ask the user for something
+    response = ask "What should I change the status of this card to? " #ask the user for something
     
     say "Changing card name to #{response}"
     
@@ -44,7 +44,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  listen_for /murmur ([.*])/ do |message|
+  listen_for /[murmur|Murmur] ([.*])/ do |message|
     say "Murmuring this for you : #{message}"
 
     success = @mingle.post(message)
