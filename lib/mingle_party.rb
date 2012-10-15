@@ -8,19 +8,19 @@ class MingleParty
     @uri = "#{host}/api/v2/projects/#{project}"
     @auth = {:username => username, :password => password}
   end
-
-  def get(number)    
+  
+  def fetch_card(number)    
     response = self.class.get("#{@uri}/cards/#{number}.xml", :basic_auth => @auth)
     Crack::XML.parse(response.body)
   end
   
-  def put(number, status)
+  def change_card_status(number, status)
     options = { :query => { 'card[properties[][name]' => 'status', 'card[properties][][value]' => status }, 
                 :basic_auth => @auth }
     response  = self.class.put( "#{@uri}/cards/#{number}.xml", options )
   end
   
-  def post(message, command)
+  def murmur(message, command)
     options = { :query => { command => message }, 
                 :basic_auth => @auth }
     response  = self.class.post( "#{@uri}/murmurs.xml", options )
