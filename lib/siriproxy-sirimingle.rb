@@ -44,7 +44,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
   
-  listen_for /[comment|Comment] ([.*])/ do |message|
+  listen_for /whisper ([.*])/ do |message|
     say "Murmuring this for you : #{message}"
 
     success = @mingle.murmur(message)
