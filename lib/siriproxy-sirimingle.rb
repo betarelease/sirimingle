@@ -34,7 +34,7 @@ class SiriProxy::Plugin::SiriMingle < SiriProxy::Plugin
     
     say "Changing card status to #{response}"
     
-    success = @mingle.change_card_property(number, response.to_s)
+    success = @mingle.change_card_status(number, response.to_s)
     if(success)
       say "Card #{number} has now changed to #{response}"
     else
