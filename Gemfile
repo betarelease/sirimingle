@@ -4,6 +4,7 @@ source :rubygems
 gemspec
 gem 'crack'
 gem 'httparty'
+gem 'mingle_party'
 
 group :test do
   gem 'rspec'
