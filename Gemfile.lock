@@ -1,20 +1,24 @@
 PATH
   remote: .
   specs:
-    siriproxy-sirimingle (0.0.1)
+    siriproxy-sirimingle (0.0.2)
       crack
       httparty
+      mingle_party
 
 GEM
   remote: http://rubygems.org/
   specs:
     crack (0.3.1)
     diff-lcs (1.1.3)
-    httparty (0.9.0)
+    httparty (0.10.0)
       multi_json (~> 1.0)
       multi_xml
-    multi_json (1.3.6)
-    multi_xml (0.5.1)
+    mingle_party (0.0.7)
+      crack
+      httparty
+    multi_json (1.15.0)
+    multi_xml (0.6.0)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -30,5 +34,6 @@ PLATFORMS
 DEPENDENCIES
   crack
   httparty
+  mingle_party
   rspec
   siriproxy-sirimingle!
